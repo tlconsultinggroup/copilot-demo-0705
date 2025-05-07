@@ -1,9 +1,12 @@
-class calculator {
+class Calculator {
   constructor() {
     this.result = 0;
   }
 
 add(...numbers) {
+    if (!numbers.every(num => typeof num === 'number' && !isNaN(num))) {
+        throw new Error("All inputs must be valid numbers");
+    }
     this.result = numbers.reduce((sum, num) => sum + num, 0);
     return this.result;
 }
@@ -37,6 +40,7 @@ factorial(n) {
 }           
 //create a power function
 power(base, exponent) {
-  return Math.pow(base, exponent);
+  this.result = Math.pow(base, exponent);
+  return this.result;
 }
 }
